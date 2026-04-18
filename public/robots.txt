@@ -1,0 +1,26 @@
+# robots.txt for IITM Scholar Hub
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://iitm-scholar-hub.vercel.app/sitemap.xml
+
+# Important pages that should be prioritized by crawlers
+Allow: /resume-generator
+Allow: /ai-assistant
+Allow: /grade-calculator
+Allow: /cgpa-calculator
+Allow: /endterm-marks-predictor
+Allow: /roadmaps
+Allow: /python-cheatsheet
+
+# Directories
+Allow: /about/
+
+# Disallow unnecessary routes
+Disallow: /api/
+Disallow: /_next/
+
+Crawl-delay: 1

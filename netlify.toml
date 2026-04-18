@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# This is the key configuration to fix refresh issues
+# It tells Netlify to redirect all requests to index.html
+# so that your React Router can handle the routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

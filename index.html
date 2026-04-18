@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IITM Scholar Hub | IIT Madras BS GPA & CGPA Calculator + Marks Predictor</title>
+  <meta name="description"
+    content="Free IIT Madras GPA calculator, CGPA calculator, End Term Marks Predictor & Python cheatsheet for Foundation, Diploma, BSc & BS students. Calculate grades and predict marks instantly!" />
+  <meta name="author" content="IITM Scholar Hub" />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://iitm-scholar-hub.vercel.app/" />
+
+  <!-- Performance optimizations -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="/iitm-logo.svg" as="image" type="image/svg+xml" />
+  <link rel="preload" href="/assets/vendor-react.js" as="script" />
+  <link rel="dns-prefetch" href="https://openrouter.ai" />
+
+  <!-- PWA support -->
+  <link rel="manifest" href="/app.webmanifest" />
+  <meta name="theme-color" content="#3b82f6" />
+  <link rel="icon" type="image/svg+xml" href="/iitm-logo.svg" />
+  <link rel="apple-touch-icon" href="/icon-192x192.png" />
+
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://iitm-scholar-hub.vercel.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IITM Scholar Hub | GPA Calculator, CGPA & Marks Predictor">
+  <meta property="og:description"
+    content="Free IIT Madras GPA calculator, CGPA calculator & Marks Predictor. Tools for Foundation, Diploma, BSc & BS degree students.">
+  <meta property="og:image" content="https://iitm-scholar-hub.vercel.app/og-image.png">
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="twitter:domain" content="iitm-scholar-hub.vercel.app">
+  <meta property="twitter:url" content="https://iitm-scholar-hub.vercel.app/">
+  <meta name="twitter:title" content="IITM Scholar Hub | GPA Calculator, CGPA & Marks Predictor">
+  <meta name="twitter:description"
+    content="Free IIT Madras GPA calculator, CGPA calculator & Marks Predictor for IITM students.">
+  <meta name="twitter:image" content="https://iitm-scholar-hub.vercel.app/og-image.png">
+
+  <!-- Organization Schema for Google Logo Display -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "IITM Scholar Hub",
+      "url": "https://iitm-scholar-hub.vercel.app",
+      "logo": "https://iitm-scholar-hub.vercel.app/iitm-logo.svg",
+      "description": "Free GPA Calculator, CGPA Calculator & Marks Predictor for IIT Madras students",
+      "sameAs": []
+    }
+  </script>
+
+  <!-- WebSite Schema for Sitelinks -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "IITM Scholar Hub",
+      "url": "https://iitm-scholar-hub.vercel.app",
+      "description": "Free GPA Calculator, CGPA Calculator, End Term Marks Predictor & Python Cheatsheet for IIT Madras students.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://iitm-scholar-hub.vercel.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+
+  <!-- WebApplication Schema - Grade Calculator -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "IITM Grade Calculator",
+      "url": "https://iitm-scholar-hub.vercel.app/grade-calculator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "description": "Free Grade Calculator for IIT Madras Foundation, Diploma, BSc & BS students",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  </script>
+
+  <!-- WebApplication Schema - CGPA Calculator -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "IITM CGPA Calculator",
+      "url": "https://iitm-scholar-hub.vercel.app/cgpa-calculator",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "description": "Free CGPA Calculator for IIT Madras online degree students",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  </script>
+
+  <!-- WebApplication Schema - End Term Marks Predictor -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "IITM End Term Marks Predictor",
+      "url": "https://iitm-scholar-hub.vercel.app/endterm-marks-predictor",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "description": "Predict your end term marks for IIT Madras subjects",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  </script>
+
+  <!-- WebApplication Schema - Python Cheatsheet -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "IITM Python Cheatsheet",
+      "url": "https://iitm-scholar-hub.vercel.app/python-cheatsheet",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "All",
+      "description": "Python cheatsheet for IIT Madras programming courses",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
+    }
+  </script>
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://iitm-scholar-hub.vercel.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Grade Calculator",
+          "item": "https://iitm-scholar-hub.vercel.app/grade-calculator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CGPA Calculator",
+          "item": "https://iitm-scholar-hub.vercel.app/cgpa-calculator"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "End Term Marks Predictor",
+          "item": "https://iitm-scholar-hub.vercel.app/endterm-marks-predictor"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Python Cheatsheet",
+          "item": "https://iitm-scholar-hub.vercel.app/python-cheatsheet"
+        }
+      ]
+    }
+  </script>
+
+  <!-- FAQPage Schema for Rich Snippets -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How to calculate GPA for IIT Madras online degree?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use the IITM Scholar Hub Grade Calculator. Enter your subject marks for Foundation, Diploma, BSc, or BS courses and the calculator will automatically compute your GPA based on IIT Madras grading system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is CGPA calculator for IITM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The CGPA calculator computes your cumulative grade point average across all semesters for IIT Madras online degree programs including Foundation, Diploma, BSc and BS levels."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the End Term Marks Predictor work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter your OPPE, GAE, and other continuous assessment scores. The predictor calculates the minimum marks needed in end term exam to achieve your desired grade in IIT Madras courses."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is IITM Scholar Hub free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, all tools including Grade Calculator, CGPA Calculator, End Term Marks Predictor, and Python Cheatsheet are completely free for all IIT Madras students."
+          }
+        }
+      ]
+    }
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+
+  <!-- Service worker registration -->
+  <script>
+    // Register service worker for production
+    if ('serviceWorker' in navigator && window.location.hostname !== 'localhost') {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(error => {
+          console.error('Service worker registration failed:', error);
+        });
+      });
+    }
+  </script>
+</body>
+
+</html>

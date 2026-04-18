@@ -1,0 +1,6 @@
+import{c as s,y as a,r as o,j as e,M as i,L as n,B as r}from"./index-C6bF14Ny.js";/**
+ * @license lucide-react v0.462.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */const c=s("FileQuestion",[["path",{d:"M12 17h.01",key:"p32p05"}],["path",{d:"M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z",key:"1mlx9k"}],["path",{d:"M9.1 9a3 3 0 0 1 5.82 1c0 2-3 3-3 3",key:"mhlwft"}]]),x=()=>{const t=a();return o.useEffect(()=>{console.error("404 Error: User attempted to access non-existent route:",t.pathname)},[t.pathname]),e.jsx(i,{children:e.jsxs("div",{className:"container py-16 flex flex-col items-center justify-center",children:[e.jsx("div",{className:"w-20 h-20 bg-iitm-blue/10 rounded-full flex items-center justify-center mb-6",children:e.jsx(c,{className:"h-10 w-10 text-iitm-blue"})}),e.jsx("h1",{className:"text-4xl font-bold text-iitm-dark mb-4",children:"404"}),e.jsx("p",{className:"text-xl text-gray-600 mb-6 text-center",children:"Oops! The page you're looking for doesn't exist."}),e.jsx(n,{to:"/",children:e.jsx(r,{className:"bg-iitm-blue text-white hover:bg-iitm-blue/90",children:"Return to Home"})})]})})};export{x as default};

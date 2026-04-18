@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate IITM Scholar Hub OG Image</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #1e40af;
+      text-align: center;
+    }
+    .instructions {
+      background-color: #f0f4ff;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border-left: 4px solid #1e40af;
+    }
+    .svg-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
+    .button-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    button {
+      background-color: #1e40af;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #153e75;
+    }
+    .note {
+      margin-top: 20px;
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Generate IITM Scholar Hub OG Image</h1>
+    
+    <div class="instructions">
+      <p><strong>Instructions:</strong></p>
+      <ol>
+        <li>The SVG image below is the IITM Scholar Hub Open Graph image that will be used for social sharing.</li>
+        <li>Click the "Download as PNG" button to save this image as a PNG file.</li>
+        <li>Save the file as "og-image.png" in the "public" folder of your project.</li>
+        <li>Ensure the final image dimensions are 1200×630 pixels for optimal social media sharing.</li>
+      </ol>
+    </div>
+    
+    <div class="svg-container">
+      <!-- Inline SVG for OG Image with improved design -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+        <!-- Background gradient -->
+        <defs>
+          <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#1e3a8a" />
+            <stop offset="100%" stop-color="#1e40af" />
+          </linearGradient>
+          <linearGradient id="circle-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#60a5fa" />
+          </linearGradient>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="15" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+        
+        <!-- Main background -->
+        <rect width="1200" height="630" fill="url(#bg-gradient)" />
+        
+        <!-- Decorative elements -->
+        <circle cx="600" cy="315" r="280" fill="url(#circle-gradient)" filter="url(#glow)" opacity="0.8" />
+        
+        <!-- Logo and text elements -->
+        <g filter="url(#glow)">
+          <!-- Simplified IITM Logo -->
+          <g transform="translate(440, 200) scale(0.7)">
+            <path d="M100 100 L100 200 M140 100 L140 200 M100 100 L140 100 M100 150 L140 150" stroke="white" stroke-width="12" fill="none" />
+            <path d="M170 100 L170 200 M210 100 L210 200 M170 100 L210 100" stroke="white" stroke-width="12" fill="none" />
+            <path d="M240 100 L240 200 M280 100 L280 200 M240 100 L280 100 M240 150 L280 150" stroke="white" stroke-width="12" fill="none" />
+            <path d="M310 100 L310 200 M350 100 L350 200 M310 100 L350 100" stroke="white" stroke-width="12" fill="none" />
+          </g>
+        </g>
+        
+        <!-- Main title -->
+        <text x="600" y="370" font-family="Arial, sans-serif" font-size="76" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="1">IITM Scholar Hub</text>
+        
+        <!-- Tagline -->
+        <text x="600" y="440" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" letter-spacing="1.2">Tools for IITM Students</text>
+        
+        <!-- Feature icons -->
+        <g transform="translate(340, 480)">
+          <circle cx="0" cy="0" r="30" fill="white" opacity="0.9" />
+          <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" fill="#1e40af" text-anchor="middle">📊</text>
+        </g>
+        <g transform="translate(460, 480)">
+          <circle cx="0" cy="0" r="30" fill="white" opacity="0.9" />
+          <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" fill="#1e40af" text-anchor="middle">📝</text>
+        </g>
+        <g transform="translate(580, 480)">
+          <circle cx="0" cy="0" r="30" fill="white" opacity="0.9" />
+          <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" fill="#1e40af" text-anchor="middle">🎓</text>
+        </g>
+        <g transform="translate(700, 480)">
+          <circle cx="0" cy="0" r="30" fill="white" opacity="0.9" />
+          <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" fill="#1e40af" text-anchor="middle">🧮</text>
+        </g>
+        <g transform="translate(820, 480)">
+          <circle cx="0" cy="0" r="30" fill="white" opacity="0.9" />
+          <text x="0" y="10" font-family="Arial, sans-serif" font-size="28" fill="#1e40af" text-anchor="middle">🤖</text>
+        </g>
+      </svg>
+    </div>
+    
+    <div class="button-container">
+      <button id="downloadButton">Download as PNG</button>
+    </div>
+    
+    <div class="note">
+      <p>Note: This image contains only IITM Scholar Hub branding.</p>
+    </div>
+  </div>
+  
+  <script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+      // Create a canvas element
+      const canvas = document.createElement('canvas');
+      canvas.width = 1200;
+      canvas.height = 630;
+      const ctx = canvas.getContext('2d');
+      
+      // Create an image from the SVG
+      const img = new Image();
+      const svgData = new XMLSerializer().serializeToString(document.querySelector('svg'));
+      const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+      const url = URL.createObjectURL(svgBlob);
+      
+      img.onload = function() {
+        // Draw the image on the canvas
+        ctx.drawImage(img, 0, 0);
+        
+        // Create a download link
+        const link = document.createElement('a');
+        link.download = 'og-image.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        
+        // Clean up
+        URL.revokeObjectURL(url);
+      };
+      
+      img.src = url;
+    });
+  </script>
+</body>
+</html> 

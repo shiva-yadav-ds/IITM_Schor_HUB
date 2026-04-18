@@ -1,0 +1,327 @@
+/**
+ * AI Assistant Styles
+ * 
+ * This file contains styles specific to the AI Assistant component.
+ */
+
+/* Global container styles */
+:root {
+  /* 64px is the standard navbar height */
+  --navbar-height: 64px;
+}
+
+/* Ensure app takes full height of viewport without scrolling main page */
+body.ai-assistant-active {
+  overflow: hidden;
+}
+
+/* Markdown formatting for messages */
+.ai-message pre {
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+.ai-message code {
+  font-family: monospace;
+  font-size: 0.9em;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.ai-message strong {
+  font-weight: 600;
+  color: #1a73e8;
+}
+
+.ai-message em {
+  font-style: italic;
+}
+
+.ai-message ul, .ai-message ol {
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.ai-message ul li {
+  list-style-type: disc;
+}
+
+.ai-message ol li {
+  list-style-type: decimal;
+}
+
+/* Math content styling for rehype-katex rendering */
+.ai-message .math {
+  display: flex;
+  justify-content: center;
+  margin: 1.25rem 0;
+  overflow-x: auto;
+  font-size: 1.1em;
+}
+
+.ai-message .math-inline {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: middle;
+  margin: 0 0.15em;
+}
+
+/* Italicize variables in KaTeX */
+.ai-message .katex .mathit {
+  font-style: italic;
+}
+
+/* Adjust fraction spacing and appearance */
+.ai-message .katex .mfrac {
+  margin: 0 0.1rem;
+}
+
+.ai-message .katex .mfrac .frac-line {
+  border-color: currentColor;
+}
+
+/* Adjust spacing around relational operators */
+.ai-message .katex .mrel {
+  margin: 0 0.25rem;
+}
+
+/* Adjust spacing around binary operators */
+.ai-message .katex .mbin {
+  margin: 0 0.25rem;
+}
+
+/* Other math styling */
+.ai-message .katex {
+  font-size: 1.1em;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Step formatting with proper spacing */
+.ai-message .step {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+  color: hsl(var(--foreground));
+  display: block;
+  border-top: 1px solid rgb(26 115 232 / 0.16);
+  padding-top: 1.25rem;
+}
+
+/* First step shouldn't have the top border */
+.ai-message .step:first-of-type {
+  border-top: none;
+  margin-top: 1rem;
+}
+
+/* Add spacing around paragraphs within steps */
+.ai-message p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+/* Make sure equations are properly centered */
+.ai-message .katex-display {
+  margin: 1.75rem auto;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* Ensure inline math aligns properly with text */
+.ai-message .katex-inline {
+  vertical-align: middle;
+  font-size: 1.05em;
+}
+
+/* Better visibility for boxed solutions */
+.ai-message .katex .boxed {
+  border: 1px solid #1a73e8;
+  padding: 0.15em 0.3em;
+  border-radius: 4px;
+  background-color: rgb(26 115 232 / 0.1);
+}
+
+/* Improve spacing between list items */
+.ai-message .sub-point {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Chat bubble styling */
+.chat-bubble {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.chat-bubble:hover {
+  transform: translateY(-2px);
+}
+
+.chat-bubble::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.user-bubble::after {
+  top: 10px;
+  right: -10px;
+  border-width: 10px 0 0 10px;
+  border-color: transparent transparent transparent #1a73e8;
+}
+
+.ai-bubble::after {
+  top: 10px;
+  left: -10px;
+  border-width: 0 10px 10px 0;
+  border-color: transparent hsl(var(--card)) transparent transparent;
+}
+
+/* Scrollbar styling */
+.messages-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.7);
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Typing indicator animation for both AI Assistant and ChatWidget */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(156, 163, 175, 0.7);
+  animation: typing-dot-bounce 1.3s infinite ease-in-out;
+  display: inline-block;
+}
+
+/* Animation for typing indicator dots */
+@keyframes typing-dot-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Sidebar chat history item hover effect */
+.chat-history-item {
+  transition: all 0.2s ease;
+}
+
+.chat-history-item:hover {
+  background-color: rgb(26 115 232 / 0.08);
+}
+
+.chat-history-item.active {
+  background-color: rgb(26 115 232 / 0.12);
+}
+
+/* Chat input animations */
+.chat-input {
+  transition: all 0.3s ease;
+}
+
+.chat-input:focus {
+  box-shadow: 0 0 0 2px rgb(26 115 232 / 0.22);
+}
+
+/* Send button pulse animation when input has content */
+.send-button-ready {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(26 115 232 / 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgb(26 115 232 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(26 115 232 / 0);
+  }
+}
+
+/* KaTeX specific styling for rehype-katex */
+.ai-message .katex-display {
+  margin: 1.5rem 0;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.ai-message .katex {
+  font-size: 1.1em;
+  color: hsl(var(--foreground));
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix for fractions looking too small */
+.ai-message .katex .mfrac .frac-line {
+  border-bottom-width: 1px;
+}
+
+/* Styling for step headers */
+.ai-message h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem;
+  color: hsl(var(--foreground));
+}
+
+.ai-message h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.75rem;
+  color: hsl(var(--foreground));
+}
+
+/* Prevent math from being too pale */
+.ai-message .katex,
+.ai-message .katex .mathit,
+.ai-message .katex .mathnormal {
+  color: hsl(var(--foreground));
+} 
