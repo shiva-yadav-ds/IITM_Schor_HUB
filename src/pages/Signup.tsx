@@ -11,11 +11,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { getFriendlyAuthErrorMessage } from "@/lib/authErrorMessages";
 
 const ALLOWED_DOMAINS = ["gmail.com", "ds.study.iitm.ac.in"];
 
 const isAllowedEmail = (email: string) => {
-  const domain = email.split("@")[1];
+  const normalizedEmail = email.trim().toLowerCase();
+  const domain = normalizedEmail.split("@")[1];
   return ALLOWED_DOMAINS.includes(domain);
 };
 
@@ -41,6 +43,16 @@ const Signup = () => {
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    const normalizedEmail = formData.email.trim().toLowerCase();
+
+    if (!formData.name.trim()) {
+      toast({
+        variant: "destructive",
+        title: "Name is required",
+        description: "Please enter your full name to continue.",
+      });
+      return;
+    }
 
     if (formData.password !== formData.confirmPassword) {
       toast({
@@ -51,7 +63,7 @@ const Signup = () => {
       return;
     }
 
-    if (!isAllowedEmail(formData.email)) {
+    if (!isAllowedEmail(normalizedEmail)) {
       toast({
         variant: "destructive",
         title: "Email domain not allowed",
@@ -73,11 +85,11 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, formData.email, formData.password);
+      const userCredential = await createUserWithEmailAndPassword(auth, normalizedEmail, formData.password);
 
       await setDoc(doc(db, "users", userCredential.user.uid), {
-        name: formData.name,
-        email: formData.email,
+        name: formData.name.trim(),
+        email: normalizedEmail,
         profileComplete: false,
         createdAt: serverTimestamp(),
       });
@@ -90,11 +102,11 @@ const Signup = () => {
       });
 
       navigate(redirectPath || "/profile-setup");
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         variant: "destructive",
-        title: "Signup failed",
-        description: error.message || "Something went wrong. Please try again.",
+        title: "Unable to create account",
+        description: getFriendlyAuthErrorMessage(error, "signup"),
       });
     } finally {
       setLoading(false);

@@ -10,11 +10,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import { getFriendlyAuthErrorMessage } from "@/lib/authErrorMessages";
 
 const ALLOWED_DOMAINS = ["gmail.com", "ds.study.iitm.ac.in"];
 
 const isAllowedEmail = (email: string) => {
-  const domain = email.split("@")[1];
+  const normalizedEmail = email.trim().toLowerCase();
+  const domain = normalizedEmail.split("@")[1];
   return ALLOWED_DOMAINS.includes(domain);
 };
 
@@ -37,8 +39,9 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    const normalizedEmail = email.trim().toLowerCase();
 
-    if (!isAllowedEmail(email)) {
+    if (!isAllowedEmail(normalizedEmail)) {
       toast({
         variant: "destructive",
         title: "Email domain not allowed",
@@ -50,17 +53,17 @@ const Login = () => {
     }
 
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, normalizedEmail, password);
       toast({
         title: "Welcome back!",
         description: "You've been successfully logged in.",
       });
       navigate(redirectPath);
-    } catch (error: any) {
+    } catch (error: unknown) {
       toast({
         variant: "destructive",
-        title: "Login failed",
-        description: error.message || "Please check your credentials and try again.",
+        title: "Unable to sign in",
+        description: getFriendlyAuthErrorMessage(error, "login"),
       });
     } finally {
       setLoading(false);

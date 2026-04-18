@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { doc, getDoc } from "firebase/firestore";
 import {
   Book,
   BookOpen,
@@ -20,6 +21,7 @@ import {
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/components/AuthProvider";
+import { db } from "@/firebaseConfig";
 
 const navItems = [
   { name: "Home", path: "/", icon: Home },
@@ -50,9 +52,35 @@ const navItems = [
 const Navbar = () => {
   const location = useLocation();
   const { user } = useAuth();
+  const [profileName, setProfileName] = useState<string>("");
+  const userDisplayName =
+    profileName || user?.displayName?.trim() || user?.email?.split("@")[0] || "Profile";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const loadProfileName = async () => {
+      if (!user?.uid) {
+        setProfileName("");
+        return;
+      }
+
+      try {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists()) {
+          const data = userDoc.data() as { name?: string };
+          setProfileName(data.name?.trim() || "");
+        } else {
+          setProfileName("");
+        }
+      } catch {
+        setProfileName("");
+      }
+    };
+
+    loadProfileName();
+  }, [user?.uid]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 8);
@@ -188,7 +216,7 @@ const Navbar = () => {
               <Link to="/profile" className="hidden sm:block">
                 <Button variant="outline" size="sm" className="rounded-full">
                   <UserCircle2 className="mr-2 h-4 w-4" />
-                  Profile
+                  <span className="max-w-[10rem] truncate">{userDisplayName}</span>
                 </Button>
               </Link>
             ) : (
@@ -229,7 +257,7 @@ const Navbar = () => {
                   )}
                 >
                   {user ? <UserCircle2 className="h-4 w-4 text-primary" /> : <LogIn className="h-4 w-4 text-primary" />}
-                  {user ? "Profile" : "Login"}
+                  {user ? userDisplayName : "Login"}
                 </Link>
                 {navItems.map((item) => {
                   const Icon = item.icon;
